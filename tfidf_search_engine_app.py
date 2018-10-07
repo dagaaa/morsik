@@ -1,6 +1,8 @@
 import sys
 
 from configuration.tfidf.config import TfidfConfig
+from model.util.file_parser import parse_dir_json
+from search_engine.tfidf.search_engine import SearchEngine
 from search_engine.tfidf.logger.logger_config import init_logger
 
 if __name__ == '__main__':
@@ -10,7 +12,7 @@ if __name__ == '__main__':
 
     docs = parse_dir_json(config['data_path'])
 
-    searchEngine = SearchEngine(config['topics']) #todo to chyba nie powinno zwierac topics
+    searchEngine = SearchEngine()
     searchEngine.load_model(config['model_path'], config['dict_path'])
     searchEngine.dummy_index(docs)
 
